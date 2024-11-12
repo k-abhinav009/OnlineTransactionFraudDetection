@@ -1,0 +1,61 @@
+
+ {% extends 'base.html'%}
+
+
+
+
+{% block content %}
+
+
+    <div class="col-md-12 divhead">
+		<br>
+		<center><h4>Blocked Request</h4></center>
+		<hr>
+		
+	</div>
+	{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h3><li style="color: red"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></h3>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form id="CartDetails" method="POST" class="post-form" action="/addtocart/">  
+        {% csrf_token %}  
+<center>
+<div class="container-fluid" style="margin-top: 1%;padding:5%">	
+	
+	<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+    	 
+        <th>User id</th>  
+        <th>Card Number</th>  
+        <th>Cvv</th>  
+        <th>Issue</th>  
+        <th>Update Status</th> 
+    </tr>  
+    </thead>  
+    <tbody> 
+
+	{% for or in Order %}  
+		<tr>  
+	        <td>{{ or.user_id }}</td> 
+	        <td>{{ or.Card_number }}</td>  
+	        <td>{{ or.cvv }}</td>  
+	        <th>{{ or.Issue }}</th>  
+	         
+	        <td>   
+	            <a href="/unblock/{{ or.id }}">Unblock</a>  
+	        </td>  
+		</tr> 
+	{% endfor %} 
+
+    </tbody>  
+	</table>
+</div>
+</center>
+</form>
+
+{% endblock %}

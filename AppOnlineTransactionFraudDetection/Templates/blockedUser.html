@@ -1,0 +1,73 @@
+
+ {% extends 'base.html'%}
+
+
+
+
+{% block content %}
+{% load static %}
+
+<div class="container">
+
+  <div class="col-md-12 col-md-offset-12 lgndiv">
+	<div class="col-md-12 divhead">
+		<br>
+		<center><h4>Unblock Request</h4></center>
+		<hr>
+		<br>
+	</div>
+
+
+
+    <form class="form-horizontal" action='/blocked/' method="POST" id="signup-form"> 
+    {% csrf_token %}
+
+
+	<div class="col-md-12 txtboxdiv">
+
+
+	{% if messages %}
+	<ul class="messages">
+	    {% for message in messages %}
+	    <h3><li style="color: red" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></h3>
+	    {% endfor %}
+	</ul>
+	{% endif %}
+{% for us in user %}
+		<label for="ProductName" style="color: #343a40;font-weight: bold;">Card Number</label>
+		<input type="text"  readonly="true" name="CardNumber" value=" {{us.Card_number}}" placeholder="Card Number" style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+
+		<label for="Category"  style="color: #343a40;font-weight: bold;"> Cvv </label>
+		 <input type="text" name="Cvv"  readonly="true" value=" {{us.cvv}}" placeholder="Cvv" style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+		  
+		 <label for="costsds"  style="color: #343a40;font-weight: bold;">Issue</label>
+		 <textarea name="Issue" placeholder="Issue" class="form-control " style="height:150px;"></textarea>
+		 <br>
+		  
+		 <label for="cost"  style="color: #343a40;font-weight: bold;">Uid</label>
+		 <input type="text"  readonly="true" name="Uid" value="{{us.user_id}}" placeholder="Uid"style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+		 {% endfor%}
+	</div>
+	<div class="col-md-12 btndiv text-center">
+		
+	
+	<button type="submit" class="btn btn-success">Request</button>
+	
+
+		
+
+		<br><br>
+	</div>
+    </form>
+
+
+	<div class="col-md-12 divsign">
+	<div class="col-md-8 paddn">
+
+	</div>
+	
+	</div>
+  </div>
+
+</div>
+{% endblock %}

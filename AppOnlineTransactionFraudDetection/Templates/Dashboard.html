@@ -1,0 +1,51 @@
+
+ {% extends 'base.html'%}
+
+
+
+
+
+{% block content %}
+{% load static %}
+{% static "images" as baseUrl%}
+  <div class="col-md-12 col-md-offset-12 lgndiv">
+	<div class="col-md-12 divhead">
+		<br>
+		<center><h1>Products</h1></center>
+		<hr>
+		<br>
+	</div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h3><li style="color: red"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></h3>
+    {% endfor %}
+</ul>
+{% endif %}
+<form method="POST" class="post-form" action="/productdetails/{{product.id}}">  
+        {% csrf_token %}  
+
+<div class="container">
+<div class="row">
+{% for product in products %}
+
+  <div class="card" style="width:31%;padding: 1%;margin:1%">
+    <img class="card-img-top " src="{{product.image.url}}" alt="Card image" style="height: 300px;width:100%;">
+    <div class="card-body">
+      <h6 class="card-title">{{product.pname}}</h6>
+      <p style="font-size: small;" class="card-text">{{product.desc}}</p>
+
+      <a href="/productdetails/{{ product.id }}" style="display: flow-root;background-color: #343a40;" class="btn btn-primary stretched-link text-center">View Products</a>
+    </div>
+  </div>
+
+<br>
+<br>
+
+{% endfor %}
+ 
+</div>
+<br>
+</div>
+</form> 
+{% endblock %}

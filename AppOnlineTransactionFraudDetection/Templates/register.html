@@ -1,0 +1,186 @@
+
+ {% extends 'base.html'%}
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+
+  <div class="col-md-12 col-md-offset-12 lgndiv">
+	<div class="col-md-12 divhead">
+		<br>
+		<center><h4>Register Here</h4></center>
+		<hr>
+		<br>
+	</div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h3><li style="color: red"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></h3>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+    <form class="form-horizontal" action='/register/' method="POST" id="signup-form"> 
+    {% csrf_token %}
+
+	<div class="col-md-12 txtboxdiv">
+
+		<label for="first_name" style="color: #343a40;font-weight: bold;">First Name</label>
+		<input type="text" name="first_name" required="" placeholder="First Name" style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+		<label for="last_name"  style="color: #343a40;font-weight: bold;">Last Name</label>
+		 <input type="text" name="last_name" required="" placeholder="Last Name" style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+		  
+		 <label for="Username"  style="color: #343a40;font-weight: bold;">UserName</label>
+		  <input type="text" name="Username" required="" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Username" class="form-control txtbox1">
+		  {% for message in messages %}
+		  <h3>{{messgae}}</h3>
+		  {% endfor%}
+		 
+		 <label for="email"  style="color: #343a40;font-weight: bold;">Email</label>
+		 <input type="email" name="Email" required="" placeholder="Email"style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+
+		 <label for="Password"  style="color: #343a40;font-weight: bold;">Password</label>
+         <input type="password" id="password1"   name="password1" required=""  style="margin-top: 2px;margin-bottom: 2%;" placeholder="Password" class="form-control txtbox1">
+
+         <label for="Password"  style="color: #343a40;font-weight: bold;">Confirm Password</label>
+          <input type="password" id="password2"  name="password2" required="" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Confirm Password" class="form-control txtbox1">
+         
+        <label for="Cardnumber"  style="color: #343a40;font-weight: bold;">Card Number</label>
+         <input type="number" id="Cardnumber" name="Cardnumber" required="" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Card Number" class="form-control txtbox1">
+		
+		<label for="Cvv"  style="color: #343a40;font-weight: bold;">Cvv</label>
+         <input type="number"  id="cvv" maxlength="3" name="Cvv" required="" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Cvv" class="form-control txtbox1">
+
+         <label for="Expiry"  style="color: #343a40;font-weight: bold;">Expiry Date</label>
+         <div class="row">
+		 	<div class="col-md-5">		 		
+		 		<input type="number"  id="Expirymonth" required=""  name="Expiry_month" style="margin-top: 2px;margin-bottom: 2%;" placeholder="MM" class="form-control txtbox1">
+		 	</div>
+		 	<div class="col-md-1">  <h3>/</h3>   </div>
+		 	<div  class="col-md-6">		 		
+		 		 <input type="number"  id="Expiryyear" required="" name="Expiry_year" style="margin-top: 2px;margin-bottom: 2%;" placeholder="YY" class="form-control txtbox1">
+		 	</div>
+		 
+		
+		</div>
+
+
+		<label for="Mobile"   style="color: #343a40;font-weight: bold;">Mobile</label>
+         <input type="number" id="Mobile" name="Mobile" required="" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Mobile Number" class="form-control txtbox1">
+
+         <label for="MaxTransferamount"  style="color: #343a40;font-weight: bold;">Max Transfer amount</label>
+         <input type="number" name="MaxTransferamount" required="" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Max Transfer amount" class="form-control txtbox1">
+         
+         <label for="SecurityQuestion1"  style="color: #343a40;font-weight: bold;">Security Question 1</label>
+         <input type="text" required="" name="SecurityQuestion1" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Security Question 1" class="form-control txtbox1"> 
+
+         <label for="SecurityAnswer1"  style="color: #343a40;font-weight: bold;">Security Answer 1</label>
+         <input type="text" required="" name="SecurityAnswer1" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Security Answer 1" class="form-control txtbox1"> 
+
+         <label for="SecurityQuestion1"  style="color: #343a40;font-weight: bold;">Security Question 2</label>
+         <input type="text" required="" name="SecurityQuestion2" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Security Question 2" class="form-control txtbox1"> 
+
+         <label for="SecurityAnswer1"  style="color: #343a40;font-weight: bold;">Security Answer 2</label>
+         <input type="text" required="" name="SecurityAnswer2" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Security Answer 2" class="form-control txtbox1"> 
+
+         <label for="SecurityQuestion1"  style="color: #343a40;font-weight: bold;">Security Question 3</label>
+         <input type="text" required="" name="SecurityQuestion3" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Security Question 3" class="form-control txtbox1"> 
+
+         <label for="SecurityAnswer1"  style="color: #343a40;font-weight: bold;">Security Answer 3</label>
+         <input type="text" required="" name="SecurityAnswer3" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Security Answer 3" class="form-control txtbox1"> 
+
+	</div>
+	<div class="col-md-12 btndiv text-center">
+		
+	
+	<button type="submit" onclick="check()" class="btn btn-success">Register</button>
+	
+
+		
+
+		<br><br>
+	</div>
+    </form>
+
+
+	<div class="col-md-12 divsign">
+	<div class="col-md-8 paddn">
+
+	</div>
+	
+	</div>
+  </div>
+
+</div>
+<script type="text/javascript">
+	
+	function check() { 
+		var cc = document.getElementById('Cardnumber').value; 
+		var mobile = document.getElementById('Mobile').value; 
+		var Expiryyear = document.getElementById('Expiryyear').value; 
+		var Expirymonth = document.getElementById('Expirymonth').value; 
+		var cvv = document.getElementById('cvv').value;
+		var password1 = document.getElementById('password1').value; 
+		var password2 = document.getElementById('password2').value;
+
+
+		var reg = /^\d{16}$/;
+		var regmobile = /^\d{10}$/;
+		var regexyear = /^\d{2}$/;
+		var regexmonth = /^\d{2}$/;
+		var regcvv = /^\d{3}$/;
+		
+		if (reg.test(cc))
+		{
+			if (regmobile.test(mobile))
+			{
+				if (regexyear.test(Expiryyear))
+				{
+					if (regexmonth.test(Expirymonth))
+					{
+						if (regcvv.test(cvv))
+						{
+							if (password1 ==  password2)
+							{
+								return true;
+							}
+							else
+							{
+								alert('Both password doesnt match');
+							}
+						}
+						else
+						{
+							alert('enter 3 digit cvv');
+						}
+					}
+					else
+					{
+						alert('enter 2 digit Expirymonth');
+					}
+				}
+				else
+				{
+					alert('enter 2 digit Expiryyear');
+				}
+			}
+			else
+			{
+				alert('enter 10 digit mobile');
+			}
+		}
+		else
+		{
+			alert('enter 16 digit Credit card number');
+		}
+		
+		return false;
+}
+
+</script>
+{% endblock %}

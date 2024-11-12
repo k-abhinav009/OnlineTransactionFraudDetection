@@ -1,0 +1,80 @@
+
+ {% extends 'base.html'%}
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+
+  <div class="col-md-12 col-md-offset-12 lgndiv">
+	<div class="col-md-12 divhead">
+		<br>
+		<center><h4>Add Product</h4></center>
+		<hr>
+		<br>
+	</div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h3><li style="color: red" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></h3>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+    <form class="form-horizontal" action='/addproduct/' enctype="multipart/form-data" method="POST" id="signup-form"> 
+    {% csrf_token %}
+
+	<div class="col-md-12 txtboxdiv">
+
+		<label for="ProductName"  style="color: #343a40;font-weight: bold;">Product Name</label>
+		<input type="text" required="" name="ProductName" requi#343a40="" placeholder="Product Name" style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+		<label for="Category"  style="color: #343a40;font-weight: bold;"> Category </label>
+		 <input type="text" required="" name="Category" requi#343a40="" placeholder="Category" style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+		  
+		 <label for="costsds"  style="color: #343a40;font-weight: bold;">Sub Category</label>
+		  <input type="text" required="" name="subcategory" requi#343a40="" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Sub Category" class="form-control txtbox1">
+		  
+		 <label for="cost"  style="color: #343a40;font-weight: bold;">Cost</label>
+		 <input type="number" required="" name="cost" requi#343a40="" placeholder="Cost"style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+
+		 <label for="Password"  style="color: #343a40;font-weight: bold;">Description</label>
+         <input type="text" required="" name="Description" requi#343a40=""  style="margin-top: 2px;margin-bottom: 2%;" placeholder="Description" class="form-control txtbox1">
+
+         <label for="quantity"  style="color: #343a40;font-weight: bold;">Quantity</label>
+          <input type="number" required="" name="quantity" requi#343a40="" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Quantity" class="form-control txtbox1">
+         
+        <label for="image"  style="color: #343a40;font-weight: bold;">Image</label>
+         <input type="file" required="" name="file_upload" requi#343a40="" style="margin-top: 2px;margin-bottom: 2%;"  class="form-control txtbox1">
+		
+		
+
+          
+
+	</div>
+	<div class="col-md-12 btndiv text-center">
+		
+	
+	<button type="submit" class="btn btn-success">Add</button>
+	
+
+		
+
+		<br><br>
+	</div>
+    </form>
+
+
+	<div class="col-md-12 divsign">
+	<div class="col-md-8 paddn">
+
+	</div>
+	
+	</div>
+  </div>
+
+</div>
+{% endblock %}

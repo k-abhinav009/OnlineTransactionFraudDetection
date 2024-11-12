@@ -1,0 +1,66 @@
+
+ {% extends 'base.html'%}
+
+
+
+
+
+{% block content %}
+{% load static %}
+
+  <div class="col-md-12 col-md-offset-12 lgndiv">
+	<div class="col-md-12 divhead">
+		<br>
+		<center><h1>Products Details</h1></center>
+		<hr>
+		<br>
+	</div>
+
+<form id="productDetails" method="POST" class="post-form" action="/productdetails/{{product.id}}">  
+        {% csrf_token %}  
+
+<div class="container">
+<div class="row">
+
+
+  <div class="card" style="width:41%;margin:1%">
+  	<div class="card-body">
+    <img class="card-img-top " src="{{product.image.url}}" alt="Card image" style="height: 100%;width:100%;">
+    <!--<img class="card-img-top " src="{{product.image.url}}" alt="Card image" style="height: 100%;width:100%;">-->
+    </div>
+  </div>
+
+  <div class="card" style="width:55%;padding: 1%;margin:1%">
+    <div class="card-body">
+
+		<input type="hidden" name="uid" value="{{user.id}}">		
+		<input type="hidden" name="pid" value="{{product.Pid}}">
+		<input type="hidden" name="pname" value="{{product.pname}}">
+		<input type="hidden" name="pcost" value="{{product.cost}}">
+		<input type="hidden" name="pdesc" value="{{product.desc}}">
+		<input type="hidden" name="category" value="{{product.subcategory}}">
+
+
+      Name : <label style="font-size: xx-large;color: red ; font-weight: bold;" name="product_name" value="{{product.pname}}">{{product.pname}}</label>
+      <br> <br>
+      Cost : <label style="font-size: x-large;" name="cost">₹{{product.cost}}</label>
+      <br> <br>
+       Desc : <label style="font-size: small;" name="desc">{{product.desc}}</label>
+       <br> <br>
+       {% if user.is_superuser %}
+     {% else %}
+       Quantity :<input type="number" required="" name="Quantity" style="margin-top: 2px;margin-bottom: 2%;" placeholder="Quantity" class="form-control txtbox1">
+       <br>
+      
+<button type="submit"  style="display: flow-root;background-color: #de0808; width: 100%"  class="btn btn-primary text-center">Add To Cart</button>
+	{% endif %}
+<br>
+      <!--<a href="/addtocart/{{ product.id }}" style="display: flow-root;background-color: #de0808;" class="btn btn-primary text-center">Add To Cart</a>-->
+    </div>
+  </div> 
+</div>
+<br>
+</div>
+</form> 
+{% endblock %}
+

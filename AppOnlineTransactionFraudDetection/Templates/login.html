@@ -1,0 +1,52 @@
+
+
+ {% extends 'base.html'%}
+
+
+
+
+{% block content %}
+
+<div class="container">
+
+<div class="col-md-12 text-white" style="width: 806px;margin:10%;background: #343a40;">
+  
+  <div class="text-center">
+    <br>
+  <label >Login</label>
+  <hr style="height:2px;border:none;color: #f3f1f1;background-color: #fbf6f6;">
+  </div>
+	<form class="form-horizontal" action='/login/' method="POST" id="signup-form"> 
+    {% csrf_token %}
+		<div style="margin:2%;">
+  <div class=" form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control" required="" name="username" aria-describedby="emailHelp" placeholder="Enter username">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" required="" name="password" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group">
+  <label><a class="nav-link" href="{% url 'register'%}">Register</a></label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  
+  </form>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h3><li style="color: red"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></h3>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+  <br>
+ 
+</div>
+
+</div>
+{% endblock %}

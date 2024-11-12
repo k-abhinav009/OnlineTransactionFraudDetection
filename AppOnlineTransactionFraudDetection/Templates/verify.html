@@ -1,0 +1,58 @@
+
+ {% extends 'base.html'%}
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+	<div class="col-md-12 col-md-offset-12 lgndiv">
+		<div class="col-md-12 divhead">
+		<br>
+		<center><h4>Verify Details</h4></center>
+		<hr>
+		<br>
+		</div>
+	</div>
+	{% if messages %}
+			<ul class="messages">
+			    {% for message in messages %}
+			    <h3><li style="color: red"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></h3>
+			    {% endfor %}
+			</ul>
+			{% endif %}
+{% for or in Orders %} 
+	 <form class="form-horizontal" action='/verify/{{or.Tid}}' method="POST" id="verify-form"> 
+    {% csrf_token %}
+ 
+	<div class="col-md-12 txtboxdiv">
+		<label style="font-size: x-large;" class="text-capitalize" name="cost">Q. &nbsp;{{q1}}</label>
+		<input type="text" name="answer1" requi#343a40="" placeholder="Answer " style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+ 
+		<input type="hidden" name="tid" requi#343a40="" placeholder="Answer" value="{{or.Tid}}" style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+{% endfor %} 
+		<br>
+
+		<label style="font-size: x-large;" name="cost">Q. &nbsp;{{q2}}</label>
+		<input type="text" name="answer2" requi#343a40="" placeholder="Answer " style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+
+		<br>
+
+		<label style="font-size: x-large;" name="cost">Q. &nbsp;{{q3}}</label>
+		<input type="text" name="answer3" requi#343a40="" placeholder="Answer " style="margin-top: 2px;margin-bottom: 2%;" class="form-control txtbox1">
+
+		<br>
+		<center>
+		<button type="submit"  class="btn btn-success "> verify </button>
+		</center>
+		<br>
+	</div>
+			
+
+	</form>
+
+</div>
+
+{% endblock %}
